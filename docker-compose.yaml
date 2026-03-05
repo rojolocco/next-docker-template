@@ -1,0 +1,13 @@
+services:
+  next-app:
+    container_name: next-app
+    image: ghcr.io/rojolocco/next-docker-template:0.1.0
+    env_file:
+      - .env
+    networks:
+      - internal_network
+    restart: unless-stopped
+
+networks:
+  internal_network:
+    external: true
