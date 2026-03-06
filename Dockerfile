@@ -21,6 +21,9 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN pnpm build
 
+# Create public directory if it doesn't exist (for the COPY in runner stage)
+RUN mkdir -p /app/public
+
 # ---- Production runner ----
 FROM node:24-alpine AS runner
 WORKDIR /app
